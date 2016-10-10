@@ -1,0 +1,83 @@
+\vspace{-0.5cm}
+
+\section{Analysis of the State of the Art}
+
+\vspace{-0.3cm}
+
+\subsection{Why Mutation Testing Is a Dead End for Us}
+
+\vspace{-0.2cm}
+
+For what we are trying to achieve, \gls{lava} bugs requirements are very sensible and we will definitely try to follow those rules for, mutation testing seems definitely to be a viable option. The advantage of this method is that it produces faults which are very similar to those unintentionally added by programmers. However, this method also has certain critical drawbacks that lead us to a dead end.
+
+Brendan Dolan-Gavitt gives a very consistent example to explain why mutation testing is limited for what we are trying to achieve \cite{dolan2016mechanics}. Mutation testing is about changing existing source code in small ways to trigger buggy behavior. For the sake of example, it is well-known that the use of the C \emph{strcpy} function is a source of buffer overflows. Consider changing all the instances of the safer use of the \emph{strncpy} function by \emph{strcpy}. Presumably, doing such changes should create many potential buffer overflows.
+
+As we previously specified it, we want bugs that do not manifest themselves trivially. Conversely, adding weaknesses in such a way is most likely to break the program on every supplied input. As an example, the C code fragment below will always fail if \emph{strncpy} is changed to \emph{strcpy} \cite{dolan2016mechanics}.
+
+\vspace{0.5cm}
+
+\lstinputlisting
+    [
+        language=C,
+        caption=C code fragment showing why mutation testing is not a solution,
+        label=lst:mutation-testing-limitation
+    ]
+    {listings/mutation-testing-limitation.c}
+    
+\vspace{-0.2cm}
+
+Contrariwise, even if the bugs would manifest only on a few inputs, the way the bugs are generated does not provide us with triggering inputs. Not only does this limit our ability to trigger the bugs when we want to, but also it makes it hard to prove that there really is a bug.
+
+As a conclusion, mutation testing is unsuitable to achieve our goals because it fails to produce bugs complying with all the expected requirements.
+
+\subsection{STONESOUP: a Prominent but Unsatisfying Effort}
+
+\vspace{0.4cm}
+
+As a type of refined version of mutation testing, \gls{stonesoup} could just as well provide a viable alternative to produce high quality vulnerability corpora. \gls{stonesoup} aims to inject bugs into large code base production software by inserting code snippets into the program's \gls{ast}. As opposed to mutation testing, \gls{stonesoup} makes disposable triggering inputs a priority for its bug injection framework. That property seems quite promising for \gls{stonesoup} towards becoming a potential candidate for large-scale vulnerability addition.
+
+\vspace{0.3cm}
+
+Nonetheless, the relevance of the injected bugs is sacrificed on the altar of proof of exploitability (providing triggering inputs for each injected bug). Indeed, \gls{stonesoup} does not modify existing code, it inserts completely new and unrelated source code into the original software. As the idea is to pack several vulnerabilities into code cysts, the injected bugs are superficial. The original control flow and data flow of the program are tweaked in order to randomly seed vulnerabilities. Apart from the selection of the injection points which actually examines the original software's behavior, \gls{stonesoup} does not take into account the specificities of the base program. From this point on view, the weakness cysts may be embedded into realistic control and data flow, it does not mean yet that the bugs are realistic. However hazy may be the concept of bug realism, seeding vulnerabilities by injecting extraneous code does not feel right. This is too far from real bugs left accidentally in the code. For that reason, I chose not to follow up with \gls{stonesoup}'s bug injection framework.
+
+\vspace{0.3cm}
+
+Besides, this software relies on very specific compilation infrastructures (ROSE Compiler Infrastructure for C and binary programs \cite{llnl2016rose} / a separate system based on the Eclipse Java Development Toolkit (JDT) was implemented for Java programs), which makes it difficult to run \gls{stonesoup} on new programs. The base programs need to be prepared and modified in order to compile them, which requires a lot of time.
+
+\vspace{0.3cm}
+
+Finally, even though I rejected \gls{stonesoup} for my project, the way it handles the injection selection is actually really interesting---cross-matching executions to identify locations in the source code that are executed for every input seems quite natural. We will see that the scope of the \gls{lava} software narrows down our focus to C programs. As \gls{sate} usually propose at least one Java and C tracks, it is important to keep in mind that technique as we may try to apply it for Java test cases.
+
+\subsection{LAVA: a Promising Candidate}
+
+\vspace{0.4cm}
+
+By far, \gls{lava} seems to be the most promising candidate to help us achieve our goals. As previously explained in Section \ref{sec:lava}, \gls{lava} was designed to comply with five requirements for bugs to be relevant: bugs must be cheap and plentiful, span the execution lifetime of a program, be embedded in representative control and data flow, come with an input that serves as an existence proof, and manifest for a very small fraction of possible inputs \cite{dolan2016lava}.
+
+\vspace{0.3cm}
+
+As I kept learning about static analysis and vulnerability addition techniques, the requirements defined by the \gls{lava} team occured to me as the most relevant and sensible ones. Consequently, I chose to develop \gls{sate} VI test material in compliance with those requirements.
+
+Moreover, as \gls{lava} is designed to comply with those requirements in the first place, I figured out that maybe I could use it to achieve my aims. That is the reason why I chose to focus my work on the \gls{lava} software, and study to which extent it could help me produce high quality vulnerability corpora for assessing static analyzers.
+
+Before moving onto the technical aspects of \gls{lava}, the first thing I did was to weigh the pros and cons of using this bug injection framework.
+
+\subsubsection{Pros}
+
+Obviously, if we want to comply with the bugs' requirements defined by the \gls{lava} team, it is surely a great first step to use their software as it was designed to do so.
+
+As a dynamic taint analysis-based technique for producing ground truth corpora by quickly and automatically injecting large numbers of realistic bugs into program source code, \gls{lava} seems to be the perfect tool to start with. Considering that \gls{lava} was implemented by a team of experts and professionals, it will save us a lot of time to use their software rather than implementing our own.
+
+Moreover, as opposed to \gls{stonesoup}, \gls{lava} is actually relatively easy to run on new software. It supports large code bases, and presents most of the features we want.
+
+\subsubsection{Cons}
+
+The lastest implementation of \gls{lava} is exclusively supporting the C language which is a problem. Ideally, we would like to produce at least C and Java test cases for the sixth edition of \gls{sate}.
+
+Furthermore, \gls{lava} is only capable of injecting some types of buffer overflows at the moment, which clearly limits the scope of bugs we can insert. In the best scenario, we would like to be able to seed very diverse types of vulnerabilities. In fact, the test material development project specification states that the test cases should incorporate the most critical and frequently encountered vulnerabilities based on the \gls{cwe}/\acrshort{sans} (\acrlong{sans}) Top 25 Most Dangerous Software Errors, and the \gls{owasp} Top 10 Vulnerabilities \cite{owasp2016top}.
+
+In addition, even though the \gls{lava} implementation claims to be in compliance with the requirements, it might not be totally true. In fact, the realism of the bugs injected by \gls{lava} is yet still to be proven. Even if \gls{lava} handles the bug injection in a much neater way than \gls{stonesoup}---it is not just a matter of adding a small buggy program into the base code---it still requires in its current implementation to tweak the original dataflow of the program to make the \glspl{dua} available at the \glspl{atp}. Next section will provide more insight concerning that aspect (Section \ref{sec:lava-example}).
+
+And last but not least, the current implementation of \gls{lava} simply does not make any attempt to hide the generated bugs from human eyes. As-is, it would be just a matter of adding a rule to any static analyzer to match the specific word `lava' for the bugs to be discovered trivially.
+
+\gls{lava} is definitely a work in progress and will need a lot of improvements to be usable as-is for our needs. But it is a sufficient foundation to build upon for us, and we will see in Section \ref{sec:action-plan}, how we made \gls{lava} fit in our solution.

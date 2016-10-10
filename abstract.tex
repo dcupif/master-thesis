@@ -1,0 +1,15 @@
+\phantomsection
+\addcontentsline{toc}{chapter}{Abstract}
+\section*{Abstract}
+
+
+
+\begin{small}
+    Any program written by humans, no matter how innocuous it seems, can harbor security defects. Finding and fixing bugs is immensely costly and time consuming. Static analysis is one of many options for findings bugs in software, but most analyzers are far from perfect and resort to approximation to overcome their limitations. Therefore, tool effectiveness needs to be evaluated.
+    
+    The \acrfull{samate} project at the \acrfull{nist} has organized five Static Analysis Tool Expositions (SATE). SATE is designed to advance research in static analysis tools that find security-relevant defects in source code. For its sixth edition, SATE needs improved test material. Work on assessing automated vulnerability discovery techniques has long been hampered by the lack of realistic and significant ground-truth vulnerability corpora. Without relevant vulnerability corpora, it is impossible to evaluate the tools and techniques.
+    
+    In this paper, I present my work as a member of the \gls{samate} team in my attempt to produce high quality vulnerability corpora. In light of the current state of the art, I came to the conclusion that automated vulnerability addition techniques produce unrealistic bugs, but some of them provide relevant information from their analysis of a program. This information comprise the locations in the source code where potentially attacker-controlled data is available, and the potential injection points. LAVA (Large-scale Automated Vulnerability Addition), a novel dynamic taint analysis-based technique, provides this information. I describe how I designed a solution to make use of this information in order to seed vulnerabilities into source code manually.
+    
+    {\bf Keywords : static analysis; vulnerability addition; security weaknesses; tool effectiveness}
+\end{small}

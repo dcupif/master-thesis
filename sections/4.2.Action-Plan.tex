@@ -1,0 +1,49 @@
+\section{Action Plan}
+\label{sec:action-plan}
+
+\subsection{Reminder: Project Goals}
+
+After having analyzed the current state of the art, I was enlightened enough to be able to make my own proposal for the successful undertaking of my responsibilities on this project, which were:
+
+\begin{itemize}
+    \item Develop \gls{sate} VI test material by either upgrading the test cases used for the previous editions of \gls{sate} or implementing new test cases from scratch.
+    \item The test suite should comply with the three following properties: ground truth, relevance, and statistical significance.
+    \item The test cases should involve a large spectrum of vulnerability types, chosen from the \gls{cwe}/\acrshort{sans} Top 25 and \gls{owasp} Top 10.
+\end{itemize}
+
+\subsection{Solution Proposed}
+
+As stated previously, seeding manually vulnerabilities into source code is at the same time:
+
+\begin{itemize}
+    \item[\textcolor{custom-green}{\ding{51}}] the best way to produce relevant test cases as humans are obviously in the best position to mimic their own unintentional faults;
+    \item[\textcolor{custom-red}{\ding{55}}] and the worst way to achieve statistical significance, considering the insane amount of work implied if we want even a few handful weaknesses.
+\end{itemize}
+
+On the other hand, the current state of the art on automated vulnerability addition asserts that automated bug injection techniques are:
+
+\begin{itemize}
+    \item[\textcolor{custom-green}{\ding{51}}] the best alternatives to seed a great number of bugs into large code base production software (statistical significance);
+    \item[\textcolor{custom-red}{\ding{55}}] but the realism of these \emph{per se} injected bugs is still arguable.
+\end{itemize}
+
+Both of the approaches are unsatisfying, and yet, introducing interesting methods and ideas to cope with the lack of high quality vulnerability corpora.
+
+In light of the above, why could not we combine both approaches to withstand the limitations of one with the strengths of the other? There is still a long way to go before bug injection frameworks are capable of producing highly realistic bugs, and we do not have the time to wait for such a state of the art breakthrough.
+
+When you think about it, the only drawback of seeding vulnerabilities manually is the time it takes to do so: finding potentially controllable data, identifying attack points, providing triggering inputs are all very time consuming steps. In fact, injecting the vulnerability itself is not the worst problem we are facing.
+
+Hence, I decided to use the \gls{lava} automated search system for \glspl{dua} and \glspl{atp} as a stand-alone technique to help seeding vulnerabilities manually afterwards. Using the \gls{lava} dynamic taint-based analysis and metrics computation to find \glspl{dua} and \glspl{atp} into the source code will save a lot of time. This will allow us to focus on what humans do better than machines: design realistic vulnerabilities making use of the computed \glspl{dua} and inject them at the computed \glspl{atp}.
+
+\subsection{Work Schedule}
+
+Once my solution proposal specified, I organized my work according the following schedule:
+
+\begin{enumerate}
+    \item Configure a \gls{lava} environment
+    \item Test it on the provided examples
+    \item Get familiar with the system architecture
+    \item Design a solution to make use of the precious information provided by \gls{lava} in order to identify the computed \glspl{dua} and \glspl{atp}
+    \item Make it run on future potential test cases, starting with small, uncomplicated programs, towards industrial large code base production software
+    \item Inject vulnerabilities manually into test cases using the automated search of \glspl{dua} and \glspl{atp}
+\end{enumerate}

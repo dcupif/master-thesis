@@ -1,0 +1,178 @@
+\documentclass{tnreport}
+%\documentclass[confidential]{tnreport} % If you are writing confidential report
+
+\def\reportTitle{Static Analysis Tool Exposition (SATE) Test Case Development} % Title
+\def\reportLongTitle{Static Analysis Tool Exposition (SATE) Test Case Development} % Long Title
+
+\def\reportAuthor{Damien CUPIF}
+\def\reportAuthorEmail{\email{damien.cupif@gmail.com}} % Student's email
+
+\def\reportAuthorAddress{8804 Dowling Park Place} % Student's address
+\def\reportAuthorCity{Montgomery Village, MD 20886} % Student's postal code and city
+\def\reportAuthorPhone{+1 (301) 675-6776} % Student's phone number 
+
+\def\reportIndustrialSupervisor{Mr Vadim Okun} % Industrial supervisor's name
+\def\reportAcademicSupervisor{Mrs Muriel Duval} % Academic supervisor's name
+
+\def\reportCompany{National Institute of Standards and Technology} % Company title
+\def\reportCompanyAddress{100 Bureau Dr}  % Company address
+\def\reportCompanyCity{Gaithersburg, MD 20899} % Company city and postal code
+\def\reportCompanyPhone{+1 (301) 975-2000} % Company phone number
+\def\reportCompanyLogoPath{figures/nist-logo} % Company logo
+
+\def\place{Nancy, France} % City of signature for the anti-plagiarism agreement
+\def\date{\today} % Date of signature for the anti-plagiarism agreement
+
+% Load the bibliography entries
+\addbibresource{biblio.bib}
+
+% Load the glossary entries and build it
+\makeglossaries
+\loadglsentries{glossary}
+
+\begin{document}
+
+% Change page numbering to Roman for the frontmatter
+\pagenumbering{roman}
+
+% Build the main title
+\maketitle
+
+% Insert the anti-plagiarism agreement
+\insertAntiPlagiarismAgreement{Cupif, Damien Jason}{31213723}
+
+% Build the secondary title
+\makesecondtitle
+
+\import{}{dedication}
+
+\import{}{acknowledgements}
+
+% \phantomsection
+% \addcontentsline{toc}{chapter}{Preface}
+% \section*{Preface}
+% * May be removed *
+% \cleardoublepage
+
+\renewcommand{\baselinestretch}{0.5}\normalsize
+%\setcounter{tocdepth}{3}
+\tableofcontents
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\cleardoublepage
+
+% Set back the page numbering to arabic for the mainmatter
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\addcontentsline{toc}{chapter}{Introduction}
+\chapter*{Introduction}
+
+    \import{}{introduction}
+
+\cleardoublepage
+
+\chapter{National Institute of Standards and Technology}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=0.35]{figures/nist-logo}
+      \caption{NIST logo}
+      \label{fig:nist-logo}
+    \end{figure}
+    
+    \vfill
+    
+    \begin{center}
+        \emph{Most passages in this chapter are taken \textbf{verbatim} from the\\\textcolor{custom-blue}{\gls{nist}} and {\color{custom-blue}\gls{samate}} official websites \cite{nist2016official,samate2016official}.}
+    \end{center}
+    
+    \vfill
+    
+    \import{sections/}{1.1.General-Information}
+    \import{sections/}{1.2.Vision-and-Core-Values}
+    \import{sections/}{1.3.Organizational-Structure}
+
+\cleardoublepage
+
+\chapter{Presentation of the Project}
+
+    \import{sections/}{2.1.Genesis-of-the-Project}
+    \import{sections/}{2.2.Aim-of-the-Project}
+    \import{sections/}{2.3.Out-of-Scope-/-Optionnal}
+
+\cleardoublepage
+
+\chapter{State of the Art}
+
+    \import{sections/}{3.1.Static-Analysis}
+    \import{sections/}{3.2.Vulnerability-Seeding}
+
+\cleardoublepage
+
+\chapter{Design of the Solution}
+\label{cpt:design-of-the-solution}
+
+\vspace{-1.1cm}
+
+\textit{This master thesis is a working document. By the time I am writing this report, it has been three months since I arrived at \gls{nist} in \gls{samate} team. Therefore, most of my work consisted in drawing a big picture of the state of the art on vulnerability addition, while training and learning about vulnerability types, how they look and how to implement it.}
+
+\vspace{-0.1cm}
+
+    \import{sections/}{4.1.Analysis-of-the-State-of-the-Art}
+    \import{sections/}{4.2.Action-Plan}
+    \import{sections/}{4.3.LAVA-Manipulation}
+    \import{sections/}{4.4.Test-Case-Selection}
+    \import{sections/}{4.5.Vulnerability-Training}
+
+\cleardoublepage
+
+\chapter{Ecomomic and Technological Impact}
+    \import{sections/}{5.Economic-and-Technological-Impact}
+\cleardoublepage
+
+\chapter{Results and Project's Future}
+
+    \import{sections/}{6.1.Project-Results}
+    \import{sections/}{6.2.Project-Future}
+    
+\cleardoublepage
+
+\chapter{Project Management}
+    \import{sections/}{7.Project-Management}
+\cleardoublepage
+
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
+    \import{}{conclusion}
+\cleardoublepage
+
+\printbibliography
+\addcontentsline{toc}{chapter}{Bibliography}
+\cleardoublepage
+
+\listoffigures
+\cleardoublepage
+
+\listoftables
+\cleardoublepage
+
+\lstlistoflistings
+\cleardoublepage
+
+\setglossarystyle{list}
+\printglossary[type=\acronymtype]
+
+\setglossarystyle{altlist}
+\printglossary
+\cleardoublepage
+
+% \import{}{appendices}
+% \cleardoublepage
+
+% Remove page numbering for resume and abstract 
+\thispagestyle{empty}
+
+\import{}{resume}
+\import{}{abstract}
+
+\end{document}

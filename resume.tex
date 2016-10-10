@@ -1,0 +1,15 @@
+\phantomsection
+\addcontentsline{toc}{chapter}{Résumé}
+\section*{Résumé}
+
+\vspace{-0.3cm}
+
+\begin{small}
+    Aucun programme informatique ne devrait être considéré parfaitement sécurisé. Tout dévelop\-peur est susceptible d'introduire de façon involontaire des vulnérabilités dans un programme. Le \emph{debugging}, soit l'action d'identifier et de corriger des \emph{bugs} dans un programme, est un processus du cycle de développement particulièrement chronophage et coûteux. L'analyse statique est un ensemble de techniques permettant de détecter automatiquement des vulnérabilités dans du code source. Les outils mettant en place de l'analyse statique sont imparfaits et produisent du bruit, ce qui rend l'évaluation des performances de ces derniers difficile.
+    
+    L'équipe \emph{Software Assurance Metrics And Tool Evaluation} (SAMATE) du \emph{National Institute of Standards and Technology} (NIST) a déjà organisé cinq études \emph{Static Analysis Tool Exposition} (SATE) afin d'évaluer les performances des analyseurs statiques. Pour sa sixième édition, SATE a besoin d'un matériel de test amélioré: le manque de corpus de vulnérabilités en nombre, identifiées et réalistes freine l'évaluation des outils.
+    
+    Dans ce document, je présente mon effort, en tant que membre de l'équipe SAMATE, pour produire un corpus de vulnérabilités adapté à l'évaluation des outils d'analyse statique. Après avoir dressé un état de l'art de la discipline, il semble que les techniques d'injection automatique de vulnérabilités dans du code source ne répondent pas à nos attentes: les \emph{bugs} générés sont irréalistes. Néanmoins, l'une d'entre elles, LAVA (Large-scale Automated Vulnerability Addition), fournit des informations particulièrement intéressantes pour l'injection manuelle de vulnérabilités. En particulier, LAVA fournit les locations précises dans le code où des données contrôlables sont disponibles, et les potentiels points d'injection de vulnérabilités. Nous verrons comment j'ai pu être amené à utiliser ces informations afin d'accélérer le processus de création d'un corpus de vulnérabilités destiné à l'évaluation des performances des analyseurs statiques.
+    
+    {\bf Mots-clés : analyse statique; injection de vulnérabilités; failles de sécurité; performance des outils}
+\end{small}

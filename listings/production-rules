@@ -1,0 +1,7 @@
+stmt          :=  if_stmt | assign_stmt
+if_stmt       :=  IF LPAREN expr RPAREN stmt
+expr          :=  lval
+assign_stmt   :=  lval EQUAL expr SEMI
+lval          :=  ID | arr_access
+arr_access    :=  ID arr_idx+
+arr_idx       :=  LBRACKET expr RBRACKET

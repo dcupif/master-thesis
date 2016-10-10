@@ -1,0 +1,8 @@
+
+[/home/djc3/random_test_cases/unflawed]
+
+[FC47B7EBC7641E26100BEC48D7A81ACC : low : STR03-A. Do not inadvertently truncate a null-terminated byte string : controlflow ]
+
+    Format_string_problem-good.c(23) : Branch taken: (argc >= 2)
+    Format_string_problem-good.c(26) : START -> TRUNC : strncpy(buf, ..., 5011)
+    Format_string_problem-good.c(27) : TRUNC -> ERROR : buf

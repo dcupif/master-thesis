@@ -1,0 +1,44 @@
+\section{Test Case Selection}
+
+Another related part of my work was to search potential test cases that could be used as base programs for the \gls{sate} VI test material.
+
+\subsection{Requirements}
+
+You cannot expect from any industrial software to be an appropriate test case for assessing static analyzers. Obviously we want our test cases to showcase realistic vulnerabilities, but this is not attainable for every software as some of them are not likely to present some vulnerability types.
+
+In its paper \emph{Evaluating Bug Finders}, the \gls{samate} team came up with the following aspects which should be considered for choosing a solid production test case \cite{delaitre2015evaluating}:
+
+\begin{itemize}
+    \item Attack Surface: ``the software should be designed to face a hostile environment (e.g., a web server on the Internet)''.
+    \item Size: ``the software should be comparable in size to the target code base''.
+    \item \glspl{cve}: ``the software should ideally contain a collection of diverse known vulnerabilities''.
+    \item Language: ``the software should be written in the same language as the target code base''.
+    \item Compilation: ``dependencies and other complications can lead to considerable overhead''.
+\end{itemize}
+
+Among these requirements, making sure that a test case displays a large attack surface is surely the most critical one. On the other hand, we do not need anymore the software to contain known \glspl{cve} as we are going to seed our own vulnerabilities.
+
+\subsection{Search Method}
+
+\vspace{0.5cm}
+
+For obvious software licence property reasons, we need to focus on Open Source software. In order to find projects complying with the previously stated requirements, the online \emph{GitHub} platform is a significant source of open source software with a dedicated and supporting community.
+
+\vspace{0.4cm}
+
+Most of my research consisted in exploring the open source projects on GitHub, and acknowledging for each project that seemed interesting how to compile it, and evaluting the potential attack surface.
+
+\vspace{0.4cm}
+
+When the attack surface seemed to be good enough, I would run the \emph{sloccount} command line tool which is able to determine the number of effective \glspl{sloc} \cite{wheeler2016sloccount}. Remember that we are looking for industrial size software, which means code bases with at least tens or hundreds of thousands \glspl{sloc}. Listing \ref{lst:sloccount-output} shows the output from running \emph{sloccount} onto a potential test case, \emph{Bitcoin Core}, an open source project for an experimental digital currency \cite{bitcoin2016github}.
+
+\vspace{1cm}
+
+\lstinputlisting
+    [
+        caption=Sloccount Output on the Bitcoin Project,
+        label=lst:sloccount-output
+    ]
+    {listings/sloccount-output.txt}
+
+This search for potential test cases was a real team work as everyone involved on the \gls{sate} VI project was supposed to look into it. We then organized a meeting to discuss our findings, and make a list of potential test cases. At this time, the list is still not complete as we realized we needed to specify a little bit more what were our objectives with the futur test cases.

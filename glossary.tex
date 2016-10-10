@@ -1,0 +1,155 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ACRONYMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newacronym
+    [
+        longplural={Abstract Syntax Trees},
+        see={[Glossary:]{gls-ast}}
+    ]
+    {ast}{AST}{Abstract Syntax Tree\glsadd{gls-ast}}
+
+\newacronym{atp}{ATP}{ATtack Point}
+    
+\newacronym
+    [longplural={Common Vulnerabilities and Exposures}]
+    {cve}{CVE}{Common Vulnerability Exposure}
+    
+\newacronym{cwe}{CWE}{Common Weakness Enumeration}
+
+\newacronym
+    [longplural={Dead Uncomplicated and Available}]
+    {dua}{DUA}{Dead Uncomplicated and Available}    
+    
+\newacronym{dhcp}{DHCP}{Dynamic Host Configuration Protocol}
+
+\newacronym{iarpa}{IARPA}{Intelligence Advanced Research Projects Activity}
+
+\newacronym{json}{JSON}{JavaScript Object Notation}
+    
+\newacronym{lava}{LAVA}{Large-scale Automated Vulnerability Addition}
+
+\newacronym{nist}{NIST}{National Institute of Standards and Technology}
+
+\newacronym
+    {owasp}{OWASP}{Open Web Application Security Project}
+
+\newacronym{samate}{SAMATE}{Software Assurance Metrics And Tool Evaluation}
+\newacronym
+    {sans}{SANS}{System Admnistration, Networking, and Security Institute}
+\newacronym{sard}{SARD}{Software Assurance Refererence Dataset}
+\newacronym
+    [longplural={Static Analysis Tool Expositions}]
+    {sate}{SATE}{Static Analysis Tool Exposition}
+\newacronym
+    [longplural={Single Lines Of Code}]
+    {sloc}{SLOC}{Single Line Of Code}
+\newacronym
+    [see={[Glossary:]{gls-ssa}}]
+    {ssa}{SSA}{Static Single Assignment\glsadd{gls-ssa}}
+\newacronym
+    {stonesoup}{STONESOUP}
+    {Securely Taking On New Executable Software Of Uncertain Provenance}
+    
+\newacronym{tcn}{TCN}{Taint Compute Number}
+
+\newacronym{vm}{VM}{Virtual Machine}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GLOSSARY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newglossaryentry{ai}
+{
+  name=abstract interpretation,
+  description={Abstract interpretation is a sound approximation technique of the semantics of a computer program}
+}
+
+\newglossaryentry{gls-ast}
+{
+  name=abstract syntaxic tree,
+  description={\Glspl{ast} are simplified versions of their corresponding syntaxic trees, designed to be more suitable for further analysis},
+  plural=abstract syntaxic trees
+}
+
+\newglossaryentry{cp}
+{
+  name=constant propagation,
+  description={Constant Propagation is a dataflow analysis technique that consists in replacing by its value all uses of an SSA variable that has been assigned a constant value}
+}
+
+\newglossaryentry{fn}
+{
+    name=false negative,
+    description={
+        A real problem in a program that is not reported by the tool \cite{chess2007secure}
+    },
+    plural=false negatives
+}
+
+\newglossaryentry{fp}
+{
+    name=false positive,
+    description={
+        A problem reported in a program when no problem actually exists \cite{chess2007secure}
+    },
+    plural=false positives
+}
+
+\newglossaryentry{mc}
+{
+    name=model checking,
+    description={Model checking is a technique that transforms a given specification, also called model, into a finite state automaton. It converts the program to be analyzed into a finite state automaton as well, and it compares the specification to the model \cite{chess2007secure}}
+}
+
+\newglossaryentry{mutant}
+{
+    name=mutant,
+    description={
+        A mutant is a slightly modified version of an original piece of software that has been processed through mutation analysis.
+    }
+}
+
+\newglossaryentry{se}
+{
+    name=symbolic execution,
+    description={
+        The symbolic execution of a program refers to the process of simulating an execution with abstract values rather than concrete ones \cite{anderson2008use}. This approach is based on \gls{ai} and \gls{mc}
+    }
+}
+
+\newglossaryentry{gls-ssa}
+{
+    name=static single assignment,
+    description={
+        \gls{ssa} is a dataflow analysis method that restricts functions to assign a value to a variable only once \cite{chess2007secure}.
+    }
+}
+
+\newglossaryentry{tp}
+{
+    name=taint propagation,
+    description={
+         Taint propagation is a technique which allows to determine from where data comes from by labeling all the input bytes, and propagating those labels following the execution of a program
+    }
+}
+
+\newglossaryentry{vulnerability}
+{
+    name=vulnerability,
+    description={
+        \Gls{weakness} in system security procedures, design, implementation, or internal controls whe\-reby an entity can successfully violate a system’s security (accidentally triggered or intentionally exploited) and result in a security breach or a violation of the system's security policy \cite{okun2016sate}
+    },
+    plural=vulnerabilities
+}
+
+\newglossaryentry{weakness}
+{
+    name=weakness,
+    description={
+        Defect in a system that may (or may not) lead to a vulnerability \cite{okun2016sate}
+    },
+    plural=weaknesses
+}

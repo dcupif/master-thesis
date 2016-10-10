@@ -1,0 +1,53 @@
+SLOC	Directory	SLOC-by-Language (Sorted)
+212795  src_qt          cpp=212788,sh=7
+68625   src_test        cpp=68575,python=50
+26984   src_top_dir     cpp=26984
+19564   src_leveldb     cpp=18837,ansic=557,sh=170
+13602   src_secp256k1   ansic=13566,java=34,sh=2
+11416   build-aux       sh=11416
+10454   qa              python=10432,sh=22
+8521    src_wallet      cpp=8521
+4117    src_rpc         cpp=4117
+3078    contrib         python=2653,sh=425
+2906    depends         sh=2906
+2623    src_script      cpp=2623
+1921    src_crypto      cpp=1219,ansic=702
+1153    src_univalue    cpp=1145,sh=8
+706     src_policy      cpp=706
+440     src_primitives  cpp=440
+393     src_zmq         cpp=393
+318     src_compat      cpp=318
+274     src_bench       cpp=274
+249     src_support     cpp=249
+239     src_consensus   cpp=239
+131     share           python=92,sh=39
+10      top_dir         sh=10
+2       src_obj         ansic=2
+0       autom4te.cache  (none)
+0       doc             (none)
+0       src_config      (none)
+0       src_obj-test    (none)
+
+
+Totals grouped by language (dominant language first):
+cpp:         347428 (88.97%)
+sh:           15005 (3.84%)
+ansic:        14827 (3.80%)
+python:       13227 (3.39%)
+java:            34 (0.01%)
+
+
+Total Physical Source Lines of Code (SLOC)                = 390,521
+Development Effort Estimate, Person-Years (Person-Months) = 105.26 (1,263.10)
+ (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
+Schedule Estimate, Years (Months)                         = 3.14 (37.71)
+ (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)  = 33.49
+Total Estimated Cost to Develop                           = $ 14,218,973
+ (average salary = $56,286/year, overhead = 2.40).
+SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
+SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.
+SLOCCount comes with ABSOLUTELY NO WARRANTY, and you are welcome to
+redistribute it under certain conditions as specified by the GNU GPL license;
+see the documentation for details.
+Please credit this data as "generated using David A. Wheeler's 'SLOCCount'."

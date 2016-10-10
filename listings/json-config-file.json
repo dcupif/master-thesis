@@ -1,0 +1,45 @@
+{
+
+        "buildhost": "192.168.56.32",
+        "testinghost": "192.168.56.32",
+        "pandahost": "192.168.56.64",
+
+        "lava": "/home/tleek/git/lava",
+        "qemu": "/home/tleek/git/panda/qemu/i386-softmmu/qemu-system-i386",
+        "qcow": "/lava/file/wheezy.qcow2",
+        "snapshot": "root",
+        "library_path": "{install_dir}/lib",
+
+        "directory": "/lava/file",
+
+        "name": "file",
+        "proc_name": "file",
+        "kconf_file": "/lava/file/kernelinfo.conf",
+        "kconf_group": "lava32",
+
+        "tarfile": "/lava/file/file-5.22.tar.gz",
+        "configure": "./configure",
+        "make": "make CFLAGS=-fvisibility=default -j 16",
+        "makeclean": true,
+        "install": "make install",
+
+        "command": "{install_dir}/bin/file -m {install_dir}/share/misc/magic.mgc {input_file}",
+        "timeout": 5,
+
+        "dbhost": "192.168.56.32",
+        "db": "filetleek",
+
+        "dbpassword": "postgrespostgres",
+
+        "max_liveness": 100000,
+        "max_cardinality": 100,
+        "max_tcn": 100000,
+        "max_lval_size": 100,
+
+        "main_file": [ "src/file.c" ],
+
+        "inputs": [ "/bin/ls" ],
+
+        "comment": "sed -r -i.bak 's/^.*\\((tstatbuf|s[tb])\\)(->|\\.)__pad.*$//' src/*.c"
+
+}

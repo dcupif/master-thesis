@@ -1,0 +1,1 @@
+Format_string_problem-good.c:26:[kernel] warning: out of bounds read. assert \valid_read(argv+1);

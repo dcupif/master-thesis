@@ -1,0 +1,12 @@
+[/home/djc3/random_test_cases/flawed]
+
+[CC931C8A8DEF66A38CAF76867E6DE5D7 : high : Format String : dataflow ]
+Format_string_problem-bad.c(16) :  ->printf(0)
+    Format_string_problem-bad.c(13) : <->strncpy(1->0)
+    Format_string_problem-bad.c(8) :  ->main(1)
+
+[FC47B7EBC7641E26100BEC48D7A81ACC : low : STR03-A. Do not inadvertently truncate a null-terminated byte string : controlflow ]
+
+    Format_string_problem-bad.c(10) : Branch taken: (argc >= 2)
+    Format_string_problem-bad.c(13) : START -> TRUNC : strncpy(buf, ..., 5011)
+    Format_string_problem-bad.c(14) : TRUNC -> ERROR : buf
